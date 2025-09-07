@@ -1,0 +1,684 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Added gothic color variables and styling */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Gothic color scheme */
+  --dark-color: #0a0a0a;
+  --gothic-purple: #4a0e4e;
+  --gothic-red: #8b0000;
+  --gothic-silver: #e8e8e8;
+  --gothic-gold: #ffd700;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  /* Added gothic font variables */
+  --font-metal-mania: "Metal Mania";
+  --font-creepster: "Creepster";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  /* Override body background to use gothic theme */
+  body {
+    background: linear-gradient(135deg, var(--dark-color) 0%, var(--gothic-purple) 50%, var(--dark-color) 100%) !important;
+    color: var(--gothic-silver) !important;
+    min-height: 100vh;
+  }
+}
+
+/* Added gothic styling for the flower website */
+
+/* Gothic container styling */
+.gothic-container,
+.flores-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--dark-color) 0%, var(--gothic-purple) 50%, var(--dark-color) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-metal-mania), cursive;
+}
+
+/* Gothic text styling with solid colors instead of rainbow flicker */
+.titulo {
+  margin-bottom: 200px;
+  font-family: var(--font-metal-mania), cursive;
+  color: var(--gothic-silver);
+  font-size: 42px;
+  font-weight: bold;
+  letter-spacing: 8px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards, gothic-glow 3s ease-in-out infinite;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 0 20px var(--gothic-purple), 0 0 40px var(--gothic-red);
+  z-index: 10;
+}
+
+/* Replaced flickering rainbow with gothic glow */
+@keyframes gothic-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 20px var(--gothic-purple), 0 0 40px var(--gothic-red);
+    color: var(--gothic-silver);
+  }
+  50% {
+    text-shadow: 0 0 30px var(--gothic-red), 0 0 60px var(--gothic-purple);
+    color: #ffffff;
+  }
+}
+
+.titulo span {
+  display: inline-block;
+  opacity: 1;
+  animation: gothic-letter-glow 2s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+/* Gothic letter animation instead of rainbow flicker */
+@keyframes gothic-letter-glow {
+  0%,
+  100% {
+    color: var(--gothic-silver);
+    text-shadow: 0 0 10px var(--gothic-purple);
+  }
+  50% {
+    color: #ffffff;
+    text-shadow: 0 0 15px var(--gothic-red), 0 0 25px var(--gothic-purple);
+  }
+}
+
+/* Staggered animation delays for letters */
+.titulo span:nth-child(1) {
+  animation-delay: 0s;
+}
+.titulo span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.titulo span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.titulo span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.titulo span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.titulo span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.titulo span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.titulo span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.titulo span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.titulo span:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+/* Flying bats animation */
+.gothic-bats,
+.bats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.flying-bat,
+.bat {
+  position: absolute;
+  font-size: 24px;
+  color: var(--gothic-purple);
+  animation: fly-across 8s linear infinite;
+  opacity: 0.8;
+}
+
+.bat-fly-1,
+.bat-1 {
+  top: 10%;
+  animation-delay: 0s;
+  animation-duration: 12s;
+}
+.bat-fly-2,
+.bat-2 {
+  top: 20%;
+  animation-delay: 2s;
+  animation-duration: 10s;
+}
+.bat-fly-3,
+.bat-3 {
+  top: 30%;
+  animation-delay: 4s;
+  animation-duration: 14s;
+}
+.bat-fly-4,
+.bat-4 {
+  top: 60%;
+  animation-delay: 1s;
+  animation-duration: 11s;
+}
+.bat-fly-5,
+.bat-5 {
+  top: 70%;
+  animation-delay: 3s;
+  animation-duration: 13s;
+}
+.bat-fly-6 {
+  top: 80%;
+  animation-delay: 5s;
+  animation-duration: 9s;
+}
+
+@keyframes fly-across {
+  0% {
+    left: -100px;
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  100% {
+    left: calc(100% + 100px);
+    transform: rotate(0deg);
+  }
+}
+
+/* Gothic night background */
+.night {
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, var(--gothic-purple) 0%, var(--dark-color) 70%);
+}
+
+/* Positioned flowers at bottom to not cover text */
+.flowers-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  z-index: 1;
+}
+
+/* Keep yellow flowers as requested */
+.flower__leaf {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8vmin;
+  height: 12vmin;
+  /* More natural petal shape */
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+  background: linear-gradient(to top, #ffd700 0%, #ffdd25 50%, #fff200 100%);
+  transform-origin: bottom center;
+  opacity: 0.95;
+  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add subtle texture */
+  background-image: radial-gradient(ellipse at center top, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent 0%, rgba(255, 200, 0, 0.2) 100%);
+}
+
+.flower__leaf--1 {
+  transform: translateX(-50%) rotate(0deg);
+  z-index: 3;
+  width: 8.2vmin;
+  height: 12.2vmin;
+}
+
+.flower__leaf--2 {
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 2;
+  width: 7.8vmin;
+  height: 11.8vmin;
+  background: linear-gradient(to top, #ffdd00 0%, #ffdd25 50%, #fff100 100%);
+}
+
+.flower__leaf--3 {
+  transform: translateX(-50%) rotate(90deg);
+  z-index: 3;
+  width: 8.1vmin;
+  height: 12.1vmin;
+  background: linear-gradient(to top, #ffd900 0%, #ffdd25 50%, #fff300 100%);
+}
+
+.flower__leaf--4 {
+  transform: translateX(-50%) rotate(135deg);
+  z-index: 2;
+  width: 7.9vmin;
+  height: 11.9vmin;
+  background: linear-gradient(to top, #ffdc00 0%, #ffdd25 50%, #fff000 100%);
+}
+
+.flower__leaf--5 {
+  transform: translateX(-50%) rotate(180deg);
+  z-index: 3;
+  width: 8.0vmin;
+  height: 12.0vmin;
+  background: linear-gradient(to top, #ffd800 0%, #ffdd25 50%, #fff400 100%);
+}
+
+.flower__leaf--6 {
+  transform: translateX(-50%) rotate(225deg);
+  z-index: 2;
+  width: 7.7vmin;
+  height: 11.7vmin;
+  background: linear-gradient(to top, #ffda00 0%, #ffdd25 50%, #fff200 100%);
+}
+
+.flower__leaf--7 {
+  transform: translateX(-50%) rotate(270deg);
+  z-index: 3;
+  width: 8.3vmin;
+  height: 12.3vmin;
+  background: linear-gradient(to top, #ffdb00 0%, #ffdd25 50%, #fff100 100%);
+}
+
+.flower__leaf--8 {
+  transform: translateX(-50%) rotate(315deg);
+  z-index: 2;
+  width: 7.6vmin;
+  height: 11.6vmin;
+  background: linear-gradient(to top, #ffde00 0%, #ffdd25 50%, #fff300 100%);
+}
+
+/* Improved inner petals for more fullness */
+.flower__inner-petals {
+  position: absolute;
+  bottom: 2vmin;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.flower__inner-leaf {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4.5vmin;
+  height: 6.5vmin;
+  /* More pointed inner petal shape */
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  background: linear-gradient(to top, #fff000 0%, #fff200 50%, #fff400 100%);
+  transform-origin: bottom center;
+  opacity: 0.9;
+  box-shadow: inset 0 0 1vmin rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Better positioning for inner petals */
+.flower__inner-leaf--1 {
+  transform: translateX(-50%) rotate(22.5deg);
+  width: 4.7vmin;
+  height: 6.7vmin;
+}
+
+.flower__inner-leaf--2 {
+  transform: translateX(-50%) rotate(67.5deg);
+  width: 4.4vmin;
+  height: 6.4vmin;
+}
+
+.flower__inner-leaf--3 {
+  transform: translateX(-50%) rotate(112.5deg);
+  width: 4.6vmin;
+  height: 6.6vmin;
+}
+
+.flower__inner-leaf--4 {
+  transform: translateX(-50%) rotate(157.5deg);
+  width: 4.3vmin;
+  height: 6.3vmin;
+}
+
+.flower__inner-leaf--5 {
+  transform: translateX(-50%) rotate(202.5deg);
+  width: 4.8vmin;
+  height: 6.8vmin;
+}
+
+.flower__inner-leaf--6 {
+  transform: translateX(-50%) rotate(247.5deg);
+  width: 4.2vmin;
+  height: 6.2vmin;
+}
+
+.flower__inner-leaf--7 {
+  transform: translateX(-50%) rotate(292.5deg);
+  width: 4.5vmin;
+  height: 6.5vmin;
+}
+
+.flower__inner-leaf--8 {
+  transform: translateX(-50%) rotate(337.5deg);
+  width: 4.4vmin;
+  height: 6.4vmin;
+}
+
+/* Added visible flower center for more realistic appearance */
+.flower__center {
+  position: absolute;
+  bottom: 3vmin;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3vmin;
+  height: 3vmin;
+  background: radial-gradient(circle, #ff8c00 0%, #ff6b00 50%, #ff4500 100%);
+  border-radius: 50%;
+  z-index: 5;
+  box-shadow: inset 0 0 1vmin rgba(255, 255, 255, 0.4), 0 0 1vmin rgba(255, 140, 0, 0.8);
+}
+
+/* Enhanced flower center with small details */
+.flower__center::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.5vmin;
+  height: 1.5vmin;
+  background: radial-gradient(circle, #ffff00 0%, #ffd700 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0.5vmin rgba(255, 255, 0, 0.6);
+}
+
+/* Add small stamens around the center */
+.flower__center::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vmin;
+  height: 2.5vmin;
+  background: radial-gradient(circle at 30% 30%, #ff6b00 1px, transparent 1px),
+    radial-gradient(circle at 70% 30%, #ff6b00 1px, transparent 1px),
+    radial-gradient(circle at 50% 70%, #ff6b00 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, #ff6b00 1px, transparent 1px),
+    radial-gradient(circle at 70% 70%, #ff6b00 1px, transparent 1px);
+  border-radius: 50%;
+}
+
+/* Flower animations */
+.flower {
+  position: absolute;
+  bottom: 10vmin;
+  transform-origin: bottom center;
+  z-index: 10;
+}
+
+.flower--1 {
+  animation: moving-flower-1 4s linear infinite;
+}
+.flower--2 {
+  left: 50%;
+  transform: rotate(20deg);
+  animation: moving-flower-2 4s linear infinite;
+}
+.flower--3 {
+  left: 50%;
+  transform: rotate(-15deg);
+  animation: moving-flower-3 4s linear infinite;
+}
+
+.flower__leafs {
+  position: relative;
+  animation: blooming-flower 2s backwards;
+}
+.flower__leafs--1 {
+  animation-delay: 1.1s;
+}
+.flower__leafs--2 {
+  animation-delay: 1.4s;
+}
+.flower__leafs--3 {
+  animation-delay: 1.7s;
+}
+
+.flower__white-circle {
+  position: absolute;
+  left: -3.5vmin;
+  top: -3vmin;
+  width: 9vmin;
+  height: 4vmin;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.flower__line {
+  height: 55vmin;
+  width: 1.5vmin;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)),
+    linear-gradient(to top, transparent 10%, #14757a, #39c6d6);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+  animation: grow-flower-tree 4s backwards;
+}
+
+@keyframes moving-flower-1 {
+  0%,
+  100% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes moving-flower-2 {
+  0%,
+  100% {
+    transform: rotate(18deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes moving-flower-3 {
+  0%,
+  100% {
+    transform: rotate(-18deg);
+  }
+  50% {
+    transform: rotate(-20deg) rotateY(-10deg);
+  }
+}
+
+@keyframes blooming-flower {
+  0% {
+    transform: scale(0);
+  }
+}
+
+@keyframes grow-flower-tree {
+  0% {
+    height: 0;
+    border-radius: 1vmin;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Gothic styling for index page */
+.greetings {
+  font-size: 4rem;
+  font-family: var(--font-metal-mania), cursive;
+  color: var(--gothic-silver);
+  text-shadow: 0 0 20px var(--gothic-purple);
+  margin-bottom: 2rem;
+  animation: gothic-glow 2s ease-in-out infinite;
+}
+
+.description,
+.apology {
+  font-size: 1.5rem;
+  color: var(--gothic-silver);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px var(--gothic-red);
+}
+
+.gothic-button {
+  background: linear-gradient(45deg, var(--gothic-purple), var(--gothic-red));
+  border: 2px solid var(--gothic-silver);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-family: var(--font-metal-mania), cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.gothic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--gothic-purple);
+}
+
+.button-container {
+  margin-top: 2rem;
+}
