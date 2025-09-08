@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Metal_Mania, Creepster } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
-import "../globals.css"
+import "./globals.css"
 
 const metalMania = Metal_Mania({
   weight: "400",
